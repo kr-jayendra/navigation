@@ -1,10 +1,18 @@
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../..';
 
-const ProductDetail = ({productDetail}: any) => {
+type ProductDetailProps = NativeStackScreenProps<
+  RootStackParamList,
+  'ProductDetail'
+>;
+
+const ProductDetail = ({route}: ProductDetailProps) => {
+  const {productDetail} = route.params;
   return (
     <View style={styles.container}>
-      <Text style={styles.productText}>Product Detail</Text>
       <View style={styles.productDetailContainer}>
         <View style={styles.productImageContainer}>
           <Image
@@ -13,9 +21,12 @@ const ProductDetail = ({productDetail}: any) => {
           />
         </View>
         <View style={styles.productDetail}>
-          <Text style={styles.rating}>{productDetail.rating}</Text>
+          <View style={styles.ratingNumberContainer}>
+            <Text style={styles.rating}>{productDetail.rating}</Text>
+            <Icon name="star" style={styles.starIcon} />
+          </View>
           <Text style={styles.ratingCount}>
-            {productDetail.ratingCount} ratings
+            {productDetail.ratingCount.toLocaleString()} ratings
           </Text>
         </View>
         <View style={styles.productPriceContainer}>
@@ -23,10 +34,10 @@ const ProductDetail = ({productDetail}: any) => {
             %{productDetail.offerPercentage} off
           </Text>
           <Text style={styles.originalPrice}>
-            Rs.{productDetail.originalPrice}
+            ₹{productDetail.originalPrice}
           </Text>
           <Text style={styles.discountPrice}>
-            Rs.{productDetail.discountPrice}
+            ₹{productDetail.discountPrice}
           </Text>
         </View>
         <View style={styles.productTagsContainer}>
@@ -54,51 +65,80 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   productDetailContainer: {
-    flex: 1,
+    display: 'flex',
+    gap: 20,
   },
   productImageContainer: {
-    flex: 1,
-    borderRadius: 10,
-    overflow: 'hidden',
+    width: '100%',
+    alignItems: 'center',
   },
   productImage: {
-    width: '100%',
-    height: 200,
+    width: 300,
+    height: 400,
   },
   productDetail: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 10,
+    alignItems: 'flex-end',
+  },
+  ratingNumberContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#15a905',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    paddingRight: 5,
+    borderRadius: 8,
+    gap: 7,
+  },
+  starIcon: {
+    width: 15,
+    color: '#fff',
   },
   rating: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
+    color: '#fff',
   },
   ratingCount: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
   productPriceContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 10,
+    backgroundColor: '#c1ffc4',
+    padding: 15,
+    paddingHorizontal: 9,
   },
   offerPercentage: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#15a905',
   },
   originalPrice: {
     fontSize: 16,
+    textDecorationLine: 'line-through',
     fontWeight: 'bold',
   },
   discountPrice: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#000',
   },
   productTagsContainer: {
-    flex: 1,
+    display: 'flex',
   },
   tagName: {
+    padding: 10,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 10,
     fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 10,
+    alignSelf: 'flex-start',
   },
   productTags: {
     flexDirection: 'row',

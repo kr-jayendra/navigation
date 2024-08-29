@@ -4,14 +4,14 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
+import {HomeStackParamList} from '..';
 import {useNavigation} from '@react-navigation/native';
 
-type DetailsProps = NativeStackScreenProps<RootStackParamList, 'Details'>;
+type DetailsProps = NativeStackScreenProps<HomeStackParamList, 'Details'>;
 
 const Details = ({route}: DetailsProps) => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Details</Text>

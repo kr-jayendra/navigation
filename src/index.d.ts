@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
   id: string;
   name: string;
   imageUrl: string;
@@ -9,3 +9,13 @@ interface Product {
   ratingCount: number;
   tags: string[];
 }
+
+export type RootStackParamList = {
+  ProductList: undefined;
+  ProductDetail: {productDetail: Product};
+};
+
+export type HomeStackParamList = {
+  Home: undefined;
+  Details: {productId: string};
+};
