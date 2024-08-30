@@ -10,13 +10,19 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/slider": "^4.5.2",
+    "@react-navigation/material-bottom-tabs": "^6.2.29",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "@types/react-native-vector-icons": "^6.4.18",
     "react": "18.3.1",
     "react-native": "0.75.2",
+    "react-native-linear-gradient": "^2.8.3",
+    "react-native-paper": "^5.12.5",
     "react-native-safe-area-context": "^4.10.9",
     "react-native-screens": "^3.34.0",
+    "react-native-shimmer-placeholder": "^2.0.9",
+    "react-native-track-player": "^4.1.1",
     "react-native-vector-icons": "^10.1.0"
   },
   "devDependencies": {
@@ -38,5 +44,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "packageManager": "yarn@4.4.1+sha512.f825273d0689cc9ead3259c14998037662f1dcd06912637b21a450e8da7cfeb4b1965bbee73d16927baa1201054126bc385c6f43ff4aa705c8631d26e12460f1"
 }
